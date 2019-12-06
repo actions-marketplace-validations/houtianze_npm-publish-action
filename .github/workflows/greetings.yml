@@ -1,0 +1,19 @@
+name: Greetings
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: >
+          Thank your for your first issue.
+          
+          Please describe your problem as clearly and accurately as possible.
+        pr-message: >
+          Thank you for your first pull-request.
+          
+          Please link to issues if possible.
