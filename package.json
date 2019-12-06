@@ -1,6 +1,6 @@
 {
   "name": "npm-publish-action-using-node",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "description": "GitHub action to automatically publish packages to npm (using node instead of docker)",
   "author": "Pascal",
   "contributors": [
