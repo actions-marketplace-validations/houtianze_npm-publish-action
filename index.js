@@ -15,10 +15,9 @@ async function main() {
   const defaultBranch = getEnv("DEFAULT_BRANCH") || "master";
 
   if (eventObj.ref !== `refs/heads/${defaultBranch}`) {
-    console.log(
+    throw new NeutralExitError(
       `Ref ${eventObj.ref} is not the default branch: ${defaultBranch}`
     );
-    throw new NeutralExitError();
   }
 
   const commitPattern =
@@ -37,7 +36,7 @@ async function main() {
 }
 
 function getEnv(name) {
-  return process.env[name] || process.env[`INPUT_${name}`];
+  return process.env[name] || process.env[`INPUT_${name.toUpperCase()}`];
 }
 
 function placeholderEnv(name, defaultValue) {
@@ -81,7 +80,7 @@ function checkCommit(config, commits, version) {
       return;
     }
   }
-  throw new Error(`No commit found for version: ${version}`);
+  throw new NeutralExitError(`No commit found for version: ${version}`);
 }
 
 async function readJson(file) {
@@ -183,8 +182,8 @@ if (require.main === module) {
     if (e instanceof NeutralExitError) {
       // it seems that exit code 78 is no longer supported:
       // https://github.community/t5/GitHub-Actions/GitHub-Actions-quot-neutral-quot-exit-code-is-incorrectly/td-p/29051
-      // process.exitCode = 78;
-      process.exitCode = 0;
+      process.exitCode = 78;
+      // process.exitCode = 0;
     } else {
       process.exitCode = 1;
       console.log(e.message || e);
