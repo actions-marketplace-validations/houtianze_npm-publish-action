@@ -1,4 +1,4 @@
-name: Publish to npm
+name: Publish to npm (using node)
 author: pascalgn (modified by Hou Tianze)
 description: Automatically publish new versions to npm
 
