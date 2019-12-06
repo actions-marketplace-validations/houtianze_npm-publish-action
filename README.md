@@ -40,8 +40,8 @@ Now, when someone changes the version in `package.json` to 1.2.3 and pushes a co
 
 These inputs are optional: that means that if you don't enter them, default values will be used and it'll work just fine.
 
-- `tag_name`: the name pattern of the new tag
-- `tag_message`: the message pattern of the new tag
+- `tag_name`: the name pattern of the new tag (the placeholder '%s' must be there)
+- `tag_message`: the message pattern of the new tag (the placeholder '%s' must be there)
 - `commit_pattern`: pattern that the commit message needs to follow
 
 ### Environment variables
